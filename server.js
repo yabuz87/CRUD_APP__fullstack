@@ -19,8 +19,6 @@ db.once("open", () => {
     console.log("Connected to database");
 });
 app.use(express.static('uploads'));
-
-
 // Fix: Proper middleware usage
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

@@ -1,5 +1,4 @@
-<%-include('./layout/header.ejs')%>
-
+ <%-include('./layout/header.ejs')%>
 <div class="container-lg">
     <div class="row my-4">
         <div class="col-lg-12">
@@ -7,8 +6,8 @@
                 <div class="alert alert-dismissible fade show alert-<%= message.type %>" role="alert">
                     <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
                     <strong><%= message.message %></strong>
-                </div>
-            <% } %>
+                </div> 
+             <% } %>
 
             <div class="table-responsive">
                 <table class="table table-striped">
@@ -37,16 +36,15 @@
                                     </td>
                                 </tr>
                             <% }) %>
-                        <% } else { %>
+                        <%} else {%>
                             <tr>
                                 <td colspan="6" class="text-center"><h3>No user added</h3></td>
                             </tr>
-                        <% } %>
+                        <%} %>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
 </div>
-
 <%-include('./layout/footer.ejs')%>
