@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../model/model.user");
+const session=require("express-session");
 const multer = require("multer");
 const fs = require("fs");
 
@@ -68,8 +69,9 @@ router.get("/delete/:id", async (req, res) => {
     try {
         const id = req.params.id;
         await User.findByIdAndDelete(id);
-        req.session.message = { type: 'success', message: 'User deleted successfully' };
         res.redirect("/");
+        req.session.message = { type: 'success', message: 'User deleted successfully' };
+       
     } catch (err) {
         console.error("Error deleting user:", err);
         req.session.message = { type: 'danger', message: err.message };
