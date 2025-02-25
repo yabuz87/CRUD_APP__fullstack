@@ -1,0 +1,45 @@
+<%- include('./layout/header.ejs') %>
+
+<div class="container-lg">
+    <div class="row">
+        <div class="col-lg-6 mx-auto mt-4">
+            <div class="card shadow">
+                <div class="card-header bg-dark">
+                    <h3 class="text-light text-center">Edit User</h3>
+                </div>
+                <div class="card-body p-4">
+                    <form action="/edit/<%= user._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+                        <input type="hidden" name="_method" value="PUT"> <!-- Simulate PUT request -->
+
+                        <div class="mb-3">
+                            <label for="name" class="fw-bold fs-5">Name</label>
+                            <input type="text" name="name" value="<%= user.name %>" class="form-control shadow form-control-lg" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="fw-bold fs-5">Email</label>
+                            <input type="email" name="email" value="<%= user.email %>" class="form-control shadow form-control-lg" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone" class="fw-bold fs-5">Phone</label>
+                            <input type="tel" name="phone" value="<%= user.phone %>" class="form-control shadow form-control-lg" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="image" class="form-label fs-5 fw-bold">Select Image</label>
+                            <input type="file" name="image" class="form-control shadow form-control-lg">
+                            <% if (user.image) { %>
+                                <small>Current Image:</small>
+                                <br>
+                                <img src="/uploads/<%= user.image %>" width="80" class="mt-2">
+                            <% } %>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-secondary m-2 w-50">Update User</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('./layout/footer.ejs') %>

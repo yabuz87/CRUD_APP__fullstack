@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require("mongoose");
 const session=require("express-session")
+const methodOverride = require("method-override");
 
 
 const app = express();
@@ -21,6 +22,7 @@ db.once("open", () => {
 app.use(express.static('uploads'));
 // Fix: Proper middleware usage
 app.use(express.json());
+app.use(methodOverride("_method")); 
 app.use(express.urlencoded({ extended: false }));
 app.use(session({
     secret:"my secret key",
